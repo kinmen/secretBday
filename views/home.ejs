@@ -6,12 +6,17 @@
 
   <body>
     <form id = "name-form">
-        <input type = "firstName" name = "firstName" placeholder="First Name"/>
+        <input type = "text" name = "firstName" placeholder="First Name"/>
         <br/>
-        <input type = "gameName" name = "gameName" placeholder="Gamer Name"/>
+        <input type = "text" name = "gameName" placeholder="Gamer Name"/>
         <br/>
         <button type = "submit">Confirm</button>
     </form>
+
+    <div id = "successmsg"></div>
+
+    <div id = "errormsg">
+    </div>
   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script type="text/javascript">
@@ -26,17 +31,28 @@
               dataType : 'json',
               success: function(data){
                 console.log(data);
+
+                var curDate = new Date();
+                var curMonth = curDate.getMonth()+1;
+                var curDay = curDate.getDate();
+
+                if ((curMonth == data.birthMonth) && (curDay == data.birthDay)) {
+                  var successmessage = "Happy birthday"
+
+                  if ((data.gameName === "HxCGirl") && (data.firstName === "Athina")) {
+                    successmessage = "It's not much but I told you I'd give you something more than just a hug lol.";
+                  }
+                  
+                  $("div#successmsg").html(successmessage);
+                } else {
+                  var errmessage = "It ain't even yo birthday right now gtfo"
+                  $("div#errormsg").html(errmessage);
+                }
               },
               error: function(jqxhr){
                   var errmessage = $.parseJSON(jqxhr.responseText).message;
                   console.log(errmessage);
-/*                  var errors = "";
-                  $.each(errmessage, function(index, value) {
-                      var msg = "<li>" + value.replace(",", "") + "</li>";
-                      errors += msg;
-                  });
-                  var htmlmsg = "<ul>" + errors + "</ul>";
-                  $("div#loginErr").html(htmlmsg);*/
+                  $("div#errormsg").html(errmessage);
               }
           })
       })
