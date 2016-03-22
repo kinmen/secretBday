@@ -29,7 +29,10 @@ module.exports = {
 		console.log(params);
 
 		User.findOne(params).exec(function(err, user) {
-			if (err) return res.badRequest(err);
+			if (err) {
+				console.log("exec err in findOne");
+				return res.badRequest(err);
+			}
 
 			var body = {};
 

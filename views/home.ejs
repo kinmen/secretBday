@@ -42,7 +42,7 @@
                   if ((data.gameName === "HxCGirl") && (data.firstName === "Athina")) {
                     successmessage = "It's not much but I told you I'd give you something more than just a hug lol.";
                   }
-                  
+
                   $("div#successmsg").html(successmessage);
                 } else {
                   var errmessage = "It ain't even yo birthday right now gtfo"
@@ -50,8 +50,9 @@
                 }
               },
               error: function(jqxhr){
-                  var errmessage = $.parseJSON(jqxhr.responseText).message;
-                  console.log(errmessage);
+                  // var errmessage = $.parseJSON(jqxhr.responseText).message;
+                  // console.log(errmessage);
+                  var errmessage = "Either you typed in the name wrong, or I don't know who the fuck you are. Or maybe this shit just ain't for you"
                   $("div#errormsg").html(errmessage);
               }
           })
