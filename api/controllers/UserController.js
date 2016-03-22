@@ -18,7 +18,10 @@ module.exports = {
 	get: function(req, res) {
 
 		if (!(req.param('firstName') && req.param('gameName'))) {
-			return res.badRequest('firstName and gameName params required');
+			var body = {};
+			body.err = 0;
+			body.message = "firstName and gameName params required";
+			return res.badRequest(body);
 		}
 
 		var params = req.params.all();
@@ -33,7 +36,7 @@ module.exports = {
 			if (!user) {
 				body.err = 0;
 				body.message = "Could not find such user.";
-				return res.json(body);
+				return res.badRequest(body);
 			}
 			return res.json(user);
 		});

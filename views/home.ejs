@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  </head>
+
+  <body>
+    <form id = "name-form">
+        <input type = "firstName" name = "firstName" placeholder="First Name"/>
+        <br/>
+        <input type = "gameName" name = "gameName" placeholder="Gamer Name"/>
+        <br/>
+        <button type = "submit">Confirm</button>
+    </form>
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(function(){
+      $("#name-form").submit(function(e) {
+          var formData = $(this).serialize();
+          e.preventDefault();
+          $.ajax({
+              type : 'GET', 
+              url : "user",
+              data : formData,
+              dataType : 'json',
+              success: function(data){
+                console.log(data);
+              },
+              error: function(jqxhr){
+                  var errmessage = $.parseJSON(jqxhr.responseText).message;
+                  console.log(errmessage);
+/*                  var errors = "";
+                  $.each(errmessage, function(index, value) {
+                      var msg = "<li>" + value.replace(",", "") + "</li>";
+                      errors += msg;
+                  });
+                  var htmlmsg = "<ul>" + errors + "</ul>";
+                  $("div#loginErr").html(htmlmsg);*/
+              }
+          })
+      })
+    })
+
+    </script>
+
+  </body>
+</html>
