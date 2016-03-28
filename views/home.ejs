@@ -5,17 +5,24 @@
   </head>
 
   <body>
-    <form id = "name-form">
-        <input type = "text" name = "firstName" placeholder="First Name"/>
-        <br/>
-        <input type = "text" name = "gameName" placeholder="Gamer Name"/>
-        <br/>
-        <button type = "submit">Confirm</button>
-    </form>
+    <div class = "cover slide_in">
+      <div class = "top_gate">
+        <form id = "name-form" class = "form">
+          <input type = "text" name = "firstName" placeholder="First Name"/>
+          <br/>
+          <input type = "text" name = "gameName" placeholder="Gamer Name"/>
+          <br/>
+          <button class = "myButton" type = "submit">Confirm</button>
+        </form>
+      </div>
 
-    <div id = "successmsg"></div>
+      <div class = "bottom_gate">
+        <div id = "errormsg" class = "errormsg">Enter your First name and Gamer name above.</div>
+      </div>
 
-    <div id = "errormsg">
+      <div id = "successmsg">success</div>
+
+
     </div>
   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
@@ -44,15 +51,16 @@
                   }
 
                   $("div#successmsg").html(successmessage);
+                  $("div.cover").addClass("open");
                 } else {
-                  var errmessage = "It ain't even yo birthday right now gtfo"
+                  var errmessage = "It ain't even yo birthday right now gtfo."
                   $("div#errormsg").html(errmessage);
                 }
               },
               error: function(jqxhr){
                   // var errmessage = $.parseJSON(jqxhr.responseText).message;
                   // console.log(errmessage);
-                  var errmessage = "Either you typed in the name wrong, or I don't know who the fuck you are. Or maybe this shit just ain't for you"
+                  var errmessage = "Either you typed in the name wrong, or I don't know who the fuck you are. Or maybe this shit just ain't for you."
                   $("div#errormsg").html(errmessage);
               }
           })
