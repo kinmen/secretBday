@@ -20,7 +20,7 @@
         <div id = "errormsg" class = "errormsg">Enter your First name and Gamer name above.</div>
       </div>
 
-      <div id = "successmsg">success</div>
+      <div id = "successmsg" class = "successmsg">success</div>
 
 
     </div>
@@ -47,7 +47,8 @@
                   var successmessage = "Happy birthday"
 
                   if ((data.gameName === "HxCGirl") && (data.firstName === "Athina")) {
-                    successmessage = "It's not much but I told you I'd give you something more than just a hug lol.";
+                    successmessage = " <div class ='hbd'> Happy Birthday Tina!! </div>" + 
+                    "It's not much but I told you I'd give you something more than just a hug lol. And hey at least you can say somebody built a website from scratch just for your birthday :P";
                   }
 
                   $("div#successmsg").html(successmessage);
