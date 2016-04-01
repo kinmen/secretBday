@@ -137,6 +137,20 @@ html{
     margin: 0;
 }
 
+.form input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    black;
+    opacity: 0.54;
+}
+.form input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    black;
+}
+.form input::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    black;
+}
+.form input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    black;
+}
+
 .form input[name=firstName] {
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
