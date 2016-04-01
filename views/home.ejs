@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   </head>
 
   <body>
@@ -22,6 +23,10 @@
       </div>
 
       <div id = "successmsg" class = "successmsg">success</div>
+      <i class='fa fa-chevron-up close'></i>
+      <audio id = "horn">
+        <source src = "/party_horn.mp3"></source>
+      </audio>
 
 
     </div>
@@ -417,15 +422,15 @@
         }
       }
 
+      var confetti = new confettiG.Context('confetti');
+      window.addEventListener('resize', function(event){
+        confetti.resize();
+      });
 
       $("#name-form").submit(function(e) {
           var formData = $(this).serialize();
           e.preventDefault();
-          var confetti = new confettiG.Context('confetti');
-          confetti.start();
-          window.addEventListener('resize', function(event){
-            confetti.resize();
-          });
+
           $.ajax({
               type : 'GET', 
               url : "user",
@@ -449,6 +454,13 @@
 
                   $("div#successmsg").html(successmessage);
                   $("div.cover").addClass("open");
+
+                  $("#confetti").show();
+                  confetti.start();
+
+                  var hornsound = $('#horn')[0];
+                  hornsound.play();
+
                 } else {
                   var errmessage = "It ain't even yo birthday right now gtfo."
                   $("div#errormsg").html(errmessage);
@@ -461,6 +473,11 @@
                   $("div#errormsg").html(errmessage);
               }
           })
+      })
+
+      $(".close").click(function(e) {
+        $("div.cover").removeClass("open");
+        $("#confetti").hide();
       })
     })
 

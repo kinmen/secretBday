@@ -85,6 +85,16 @@ html{
   top: 100%; bottom: -50%;
 }
 
+.cover.open .close{
+  display: inline-block;
+  position: absolute;
+  bottom: 20px;
+  cursor: pointer;
+}
+.cover .close{
+  display: none;
+}
+
 .slide_in {
   overflow: hidden;
 }
