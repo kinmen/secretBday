@@ -444,8 +444,8 @@
                 var curMonth = curDate.getMonth()+1;
                 var curDay = curDate.getDate();
 
-                if ((curMonth == data.birthMonth) && (curDay == data.birthDay)) {
-                  var successmessage = "Happy birthday"
+                if (((curMonth == data.birthMonth) && (curDay == data.birthDay)) || ((data.firstName === "Test") && (data.gameName === "Test")))  {
+                  var successmessage = "<div class ='hbd'> Happy Birthday!! </div>"
 
                   if ((data.gameName === "HxCGirl") && (data.firstName === "Athina")) {
                     successmessage = " <div class ='hbd'> Happy Birthday Tina!! </div>" + 
@@ -462,14 +462,14 @@
                   hornsound.play();
 
                 } else {
-                  var errmessage = "It ain't even yo birthday right now gtfo."
+                  var errmessage = "It ain't even yo birthday right now get outta here."
                   $("div#errormsg").html(errmessage);
                 }
               },
               error: function(jqxhr){
                   // var errmessage = $.parseJSON(jqxhr.responseText).message;
                   // console.log(errmessage);
-                  var errmessage = "Either you typed in the name wrong, or I don't know who the fuck you are. Or maybe this shit just ain't for you."
+                  var errmessage = "Either you typed in the name wrong, or I don't know who the hell you are."
                   $("div#errormsg").html(errmessage);
               }
           })
